@@ -17,6 +17,9 @@ type MessageType string
 const (
 	MessageTypeText       MessageType = MessageType("text")
 	MessageTypeImage      MessageType = MessageType("image")
+	MessageTypeAudio      MessageType = MessageType("audio")
+	MessageTypeFile       MessageType = MessageType("file")
+	MessageTypeVideo      MessageType = MessageType("video")
 	MessageTypeSticker    MessageType = MessageType("sticker")
 	MessageTypeMediaShare MessageType = MessageType("media_share")
 	MessageTypeReacton    MessageType = MessageType("reaction")
@@ -113,6 +116,129 @@ func (m *ImageMessage) MarshalJSON() ([]byte, error) {
 			Type: string(m.messageType),
 			Payload: &Payload{
 				ImageURL: m.ImageURL,
+			},
+		},
+	})
+}
+
+type AudioMessage struct {
+	messageType MessageType
+	AudioURL    string
+}
+
+// NewAudioMessage returns a new audio message.
+func NewAudioMessage(audioURL string) *AudioMessage {
+	return &AudioMessage{
+		messageType: MessageTypeAudio,
+		AudioURL:    audioURL,
+	}
+}
+
+// Type returns message type.
+func (m *AudioMessage) Type() MessageType {
+	return m.messageType
+}
+
+// MarshalJSON returns json of the message.
+func (m *AudioMessage) MarshalJSON() ([]byte, error) {
+	type Payload struct {
+		URL string `json:"url"`
+	}
+
+	type Attachment struct {
+		Type    string   `json:"type"`
+		Payload *Payload `json:"payload"`
+	}
+
+	return json.Marshal(&struct {
+		Attachment *Attachment `json:"attachment"`
+	}{
+		Attachment: &Attachment{
+			Type: string(m.messageType),
+			Payload: &Payload{
+				URL: m.AudioURL,
+			},
+		},
+	})
+}
+
+type FileMessage struct {
+	messageType MessageType
+	FileURL     string
+}
+
+// NewFileMessage returns a new File message.
+func NewFileMessage(fileURL string) *FileMessage {
+	return &FileMessage{
+		messageType: MessageTypeFile,
+		FileURL:     fileURL,
+	}
+}
+
+// Type returns message type.
+func (m *FileMessage) Type() MessageType {
+	return m.messageType
+}
+
+// MarshalJSON returns json of the message.
+func (m *FileMessage) MarshalJSON() ([]byte, error) {
+	type Payload struct {
+		URL string `json:"url"`
+	}
+
+	type Attachment struct {
+		Type    string   `json:"type"`
+		Payload *Payload `json:"payload"`
+	}
+
+	return json.Marshal(&struct {
+		Attachment *Attachment `json:"attachment"`
+	}{
+		Attachment: &Attachment{
+			Type: string(m.messageType),
+			Payload: &Payload{
+				URL: m.FileURL,
+			},
+		},
+	})
+}
+
+type VideoMessage struct {
+	messageType MessageType
+	VideoUrl    string
+}
+
+// NewVideoMessage returns a new File message.
+func NewVideoMessage(videoURL string) *VideoMessage {
+	return &VideoMessage{
+		messageType: MessageTypeFile,
+		VideoUrl:    videoURL,
+	}
+}
+
+// Type returns message type.
+func (m *VideoMessage) Type() MessageType {
+	return m.messageType
+}
+
+// MarshalJSON returns json of the message.
+func (m *VideoMessage) MarshalJSON() ([]byte, error) {
+	type Payload struct {
+		URL string `json:"url"`
+	}
+
+	type Attachment struct {
+		Type    string   `json:"type"`
+		Payload *Payload `json:"payload"`
+	}
+
+	return json.Marshal(&struct {
+		Attachment *Attachment `json:"attachment"`
+	}{
+		Attachment: &Attachment{
+			Type: string(m.messageType),
+			Payload: &Payload{
+				URL: m.VideoUrl,
 			},
 		},
 	})
