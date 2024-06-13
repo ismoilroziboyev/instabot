@@ -1,14 +1,15 @@
 # Instagram Messaging API GO SDK
 
-[![Build Status](https://github.com/BackAged/instabot/actions/workflows/go.yaml/badge.svg?branch=master)](https://github.com/BackAged/instabot/actions/workflows/go.yaml)
+[![Build Status](https://github.com/ismoilroziboyev/instabot/actions/workflows/go.yaml/badge.svg?branch=master)](https://github.com/ismoilroziboyev/instabot/actions/workflows/go.yaml)
 [![codecov](https://codecov.io/gh/BackAged/instabot/branch/master/graph/badge.svg)](https://codecov.io/gh/BackAged/instabot)
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/BackAged/instabot)
-[![Go Report Card](https://goreportcard.com/badge/github.com/BackAged/instabot)](https://goreportcard.com/report/github.com/BackAged/instabot)
-[![CodeQL](https://github.com/BackAged/instabot/actions/workflows/codeql-analysis.yaml/badge.svg?branch=master)](https://github.com/BackAged/instabot/actions/workflows/codeql-analysis.yaml)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/ismoilroziboyev/instabot)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ismoilroziboyev/instabot)](https://goreportcard.com/report/github.com/ismoilroziboyev/instabot)
+[![CodeQL](https://github.com/ismoilroziboyev/instabot/actions/workflows/codeql-analysis.yaml/badge.svg?branch=master)](https://github.com/ismoilroziboyev/instabot/actions/workflows/codeql-analysis.yaml)
 
 [![Run on Repl.it](https://repl.it/badge/github/BackAged/instabot)](https://repl.it/github/BackAged/instabot)
 
 ## Introduction
+
 Instabot, Instagram Messaging API GO SDK makes it easy to work with instagram messaging API.
 It uses Instagram messaging API latest version - `v11.0`
 
@@ -16,10 +17,10 @@ It uses Instagram messaging API latest version - `v11.0`
 
 Instabot requires Go 1.13 or later.
 
-## Installation ##
+## Installation
 
 ```sh
-$ go get -u github.com/BackAged/instabot
+$ go get -u github.com/ismoilroziboyev/instabot
 ```
 
 ## Instabot configuration
@@ -30,7 +31,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/BackAged/instabot"
+	"github.com/ismoilroziboyev/instabot"
 )
 
 func main() {
@@ -63,17 +64,17 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/BackAged/instabot"
+	"github.com/ismoilroziboyev/instabot"
 )
 
 func main() {
     // See examples directory for more example.
-    
+
     // instantiating instabot.
 	bot, err := instabot.New("your_instagram_business_account_page_access_token")
     ...
 
-    
+
     // Send text message.
 	_, err = bot.SendMessage(
 		context.Background(),

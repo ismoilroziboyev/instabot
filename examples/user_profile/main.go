@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/BackAged/instabot"
+	"github.com/ismoilroziboyev/instabot"
 )
 
 func main() {
