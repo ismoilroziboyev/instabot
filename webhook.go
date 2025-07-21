@@ -204,10 +204,25 @@ type Entry struct {
 	Messaging []*Messaging `json:"messaging"`
 }
 
+// Generic structure for changes array
+type Change struct {
+	Field string          `json:"field"`
+	Value json.RawMessage `json:"value"` // flexible structure
+}
+
 // WebhookEvent defines instagram webhook event payload.
 type WebhookEvent struct {
-	Object  string   `json:"object"`
-	Entries []*Entry `json:"entry"`
+	Object  string    `json:"object"`
+	Entries []*Entry  `json:"entry"`
+	Changes []*Change `json:"changes,omitempty"` // For fields like leadgen, feed, etc.
+}
+
+type LeadgenValue struct {
+	AdID        string `json:"ad_id"`
+	FormID      string `json:"form_id"`
+	LeadgenID   string `json:"leadgen_id"`
+	CreatedTime string `json:"created_time"`
+	PageID      string `json:"page_id"`
 }
 
 func (e *WebhookEvent) setType() {
